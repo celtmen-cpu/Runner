@@ -1,9 +1,9 @@
 :root{
-    --bg: #0f0f0f;
-    --card: #1b1b1b;
-    --primary: #4f46e5;
-    --primary-hover: #6366f1;
-    --text: white;
+    --couleur-principale: #050816;
+    --couleur-secondaire: #10172a;
+    --bleu: #4f46e5;
+    --bleu-hover: #6366f1;
+    --texte: white;
 }
 
 *{
@@ -13,91 +13,182 @@
 }
 
 body{
+    width: 100%;
     min-height: 100vh;
-    background: var(--bg);
-    color: var(--text);
 
-    font-family: Arial, sans-serif;
+    overflow-x: hidden;
+
+    background:
+        radial-gradient(circle at top left, #1e1b4b 0%, transparent 30%),
+        radial-gradient(circle at bottom right, #312e81 0%, transparent 30%),
+        var(--couleur-principale);
+
+    color: var(--texte);
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* ===== TITRE ===== */
+
+.Title{
+    margin-top: 70px;
+
+    animation: apparition 1s ease;
+}
+
+.Title h1{
+    font-size: 72px;
+    font-weight: 900;
+
+    letter-spacing: 3px;
+
+    background: linear-gradient(90deg, #ffffff, #818cf8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    text-shadow: 0 0 30px rgba(99,102,241,0.4);
+}
+
+/* ===== SOUS TITRE ===== */
+
+h2{
+    margin-top: 50px;
+    margin-bottom: 30px;
+
+    font-size: 32px;
+    color: #d1d5db;
+
+    animation: apparition 1.2s ease;
+}
+
+/* ===== LISTE ===== */
+
+ul{
+    list-style: none;
+
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    padding: 20px;
+}
+
+/* ===== CARTES ===== */
+
+li{
+    width: 260px;
+    height: 180px;
+
+    background: rgba(255,255,255,0.05);
+
+    backdrop-filter: blur(10px);
+
+    border: 1px solid rgba(255,255,255,0.08);
+
+    border-radius: 24px;
 
     display: flex;
     justify-content: center;
     align-items: center;
+
+    transition: 0.35s ease;
+
+    position: relative;
+
+    overflow: hidden;
+
+    animation: apparition 1.4s ease;
 }
 
-.container{
-    width: 90%;
-    max-width: 1100px;
+/* Lumière animée */
+
+li::before{
+    content: "";
+
+    position: absolute;
+
+    width: 120px;
+    height: 300px;
+
+    background: rgba(255,255,255,0.08);
+
+    transform: rotate(25deg);
+
+    left: -180px;
+
+    transition: 0.7s;
 }
 
-.title-box{
-    text-align: center;
-    margin-bottom: 60px;
+li:hover::before{
+    left: 320px;
 }
 
-.title-box h1{
-    font-size: 60px;
-    margin-bottom: 10px;
+/* Hover */
+
+li:hover{
+    transform: translateY(-12px) scale(1.03);
+
+    border-color: rgba(99,102,241,0.5);
+
+    box-shadow:
+        0 20px 40px rgba(0,0,0,0.5),
+        0 0 30px rgba(99,102,241,0.25);
 }
 
-.title-box p{
-    color: #b0b0b0;
-    font-size: 20px;
-}
+/* ===== BOUTONS ===== */
 
-.downloads{
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    flex-wrap: wrap;
-}
-
-.card{
-    background: var(--card);
-
-    width: 250px;
-    padding: 30px;
-
-    border-radius: 20px;
-
-    text-align: center;
-
-    transition: 0.3s;
-}
-
-.card:hover{
-    transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.4);
-}
-
-.card h2{
-    margin-bottom: 25px;
-}
-
-.download-btn{
-    border: none;
-    outline: none;
-
-    background: var(--primary);
+a{
     color: white;
 
-    padding: 15px 25px;
+    text-decoration: none;
 
-    border-radius: 12px;
+    background: linear-gradient(135deg, var(--bleu), var(--bleu-hover));
 
-    font-size: 16px;
+    padding: 18px 30px;
+
+    border-radius: 14px;
+
+    font-size: 20px;
+    font-weight: bold;
+
     cursor: pointer;
 
     transition: all 0.25s ease;
+
+    box-shadow: 0 10px 20px rgba(79,70,229,0.3);
 }
 
-.download-btn:hover{
-    background: var(--primary-hover);
-
+a:hover{
     transform: scale(1.08);
 
-    box-shadow: 0 8px 20px rgba(99,102,241,0.4);
+    box-shadow:
+        0 15px 30px rgba(79,70,229,0.5),
+        0 0 25px rgba(99,102,241,0.4);
 }
 
-.download-btn:active{
-    transform: scale(0.96);
+a:active{
+    transform: scale(0.95);
+}
+
+/* ===== ANIMATION ===== */
+
+@keyframes apparition{
+
+    from{
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
