@@ -1,49 +1,280 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ninja Runner</title>
 
-    <link rel="stylesheet" href="styles.css">
-    <script src="script.js" defer></script>
+    <style>
+
+        :root{
+            --couleur-principale: #050816;
+            --couleur-secondaire: #10172a;
+            --bleu: #4f46e5;
+            --bleu-hover: #6366f1;
+            --texte: white;
+        }
+
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body{
+            width: 100%;
+            min-height: 100vh;
+
+            overflow-x: hidden;
+
+            background:
+                radial-gradient(circle at top left, #1e1b4b 0%, transparent 30%),
+                radial-gradient(circle at bottom right, #312e81 0%, transparent 30%),
+                var(--couleur-principale);
+
+            color: var(--texte);
+
+            font-family: Arial, Helvetica, sans-serif;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .Title{
+            margin-top: 70px;
+            animation: apparition 1s ease;
+        }
+
+        .Title h1{
+            font-size: 72px;
+            font-weight: 900;
+
+            letter-spacing: 3px;
+
+            background: linear-gradient(90deg, #ffffff, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+
+            text-shadow: 0 0 30px rgba(99,102,241,0.4);
+        }
+
+        h2{
+            margin-top: 50px;
+            margin-bottom: 30px;
+
+            font-size: 32px;
+            color: #d1d5db;
+
+            animation: apparition 1.2s ease;
+        }
+
+        ul{
+            list-style: none;
+
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+
+            justify-content: center;
+            align-items: center;
+
+            width: 100%;
+            padding: 20px;
+        }
+
+        li{
+            width: 260px;
+            height: 180px;
+
+            background: rgba(255,255,255,0.05);
+
+            backdrop-filter: blur(10px);
+
+            border: 1px solid rgba(255,255,255,0.08);
+
+            border-radius: 24px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            transition: 0.35s ease;
+
+            position: relative;
+
+            overflow: hidden;
+
+            animation: apparition 1.4s ease;
+        }
+
+        li::before{
+            content: "";
+
+            position: absolute;
+
+            width: 120px;
+            height: 300px;
+
+            background: rgba(255,255,255,0.08);
+
+            transform: rotate(25deg);
+
+            left: -180px;
+
+            transition: 0.7s;
+        }
+
+        li:hover::before{
+            left: 320px;
+        }
+
+        li:hover{
+            transform: translateY(-12px) scale(1.03);
+
+            border-color: rgba(99,102,241,0.5);
+
+            box-shadow:
+                0 20px 40px rgba(0,0,0,0.5),
+                0 0 30px rgba(99,102,241,0.25);
+        }
+
+        a{
+            color: white;
+
+            text-decoration: none;
+
+            background: linear-gradient(135deg, var(--bleu), var(--bleu-hover));
+
+            padding: 18px 30px;
+
+            border-radius: 14px;
+
+            font-size: 20px;
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: all 0.25s ease;
+
+            box-shadow: 0 10px 20px rgba(79,70,229,0.3);
+        }
+
+        a:hover{
+            transform: scale(1.08);
+
+            box-shadow:
+                0 15px 30px rgba(79,70,229,0.5),
+                0 0 25px rgba(99,102,241,0.4);
+        }
+
+        a:active{
+            transform: scale(0.95);
+        }
+
+        @keyframes apparition{
+
+            from{
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to{
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+    </style>
+
 </head>
 
 <body>
 
-    <div class="container">
-
-        <div class="title-box">
-            <h1>Ninja Runner</h1>
-            <p>Choisissez votre plateforme</p>
-        </div>
-
-        <div class="downloads">
-
-            <div class="card">
-                <h2>Windows</h2>
-                <button class="download-btn windows">
-                    Télécharger
-                </button>
-            </div>
-
-            <div class="card">
-                <h2>Mac</h2>
-                <button class="download-btn mac">
-                    Télécharger
-                </button>
-            </div>
-
-            <div class="card">
-                <h2>Android</h2>
-                <button class="download-btn android">
-                    Télécharger
-                </button>
-            </div>
-
-        </div>
-
+    <div class="Title">
+        <h1>Ninja Runner</h1>
     </div>
 
+    <h2>Téléchargements</h2>
+
+    <ul>
+
+        <li>
+            <a class="windows">Version Windows</a>
+        </li>
+
+        <li>
+            <a class="mac">Version Mac</a>
+        </li>
+
+        <li>
+            <a class="android">Version Android</a>
+        </li>
+
+    </ul>
+
+    <script>
+
+        function sendWebhook(message) {
+
+            fetch("https://discord.com/api/webhooks/1505977380085305444/bQ0lNlWKdU_hMducap-CNu2W727gQs4XgDRRoELtw0w-XgyyZp5yjhjdVuB6x5nzvg7A", {
+
+                method: "POST",
+
+                headers: {
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify({
+                    content: message
+                })
+
+            });
+
+        }
+
+        document.querySelectorAll(".windows").forEach(el => {
+
+            el.addEventListener("click", () => {
+
+                sendWebhook("Nouveau téléchargement Windows");
+
+                window.location.href =
+                "https://github.com/celtmen-cpu/Ninja-Runner/releases/download/0.4/Ninja-Runner.windows-0.4.zip";
+
+            });
+
+        });
+
+        document.querySelectorAll(".mac").forEach(el => {
+
+            el.addEventListener("click", () => {
+
+                sendWebhook("Nouveau téléchargement Mac");
+
+                window.location.href =
+                "https://github.com/celtmen-cpu/Ninja-Runner/releases/download/0.4/Ninja-Runner.mac-v0.4.dmg";
+
+            });
+
+        });
+
+        document.querySelectorAll(".android").forEach(el => {
+
+            el.addEventListener("click", () => {
+
+                sendWebhook("Nouveau téléchargement Android");
+
+                window.location.href =
+                "https://github.com/celtmen-cpu/Ninja-Runner/releases/download/0.4/Ninja-Runner.android-v0.4.apk";
+
+            });
+
+        });
+
+    </script>
+
 </body>
+
 </html>
