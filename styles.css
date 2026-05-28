@@ -1,194 +1,76 @@
 :root{
-    --couleur-principale: #050816;
-    --couleur-secondaire: #10172a;
-    --bleu: #4f46e5;
-    --bleu-hover: #6366f1;
-    --texte: white;
+    --couleur-principale:#050816;
+    --bleu:#4f46e5;
+    --bleu-hover:#6366f1;
+    --texte:white;
 }
 
 *{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
 body{
-    width: 100%;
-    min-height: 100vh;
-
-    overflow-x: hidden;
-
-    background:
-        radial-gradient(circle at top left, #1e1b4b 0%, transparent 30%),
-        radial-gradient(circle at bottom right, #312e81 0%, transparent 30%),
-        var(--couleur-principale);
-
-    color: var(--texte);
-
-    font-family: Arial, Helvetica, sans-serif;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    background:radial-gradient(circle at top left,#1e1b4b,transparent 30%),
+               radial-gradient(circle at bottom right,#312e81,transparent 30%),
+               var(--couleur-principale);
+    color:var(--texte);
+    font-family:Arial;
 }
 
-/* ===== TITRE ===== */
-
 .Title{
-    margin-top: 70px;
-
-    animation: apparition 1s ease;
+    margin-top:70px;
 }
 
 .Title h1{
-    font-size: 72px;
-    font-weight: 900;
-
-    letter-spacing: 3px;
-
-    background: linear-gradient(90deg, #ffffff, #818cf8);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-
-    text-shadow: 0 0 30px rgba(99,102,241,0.4);
+    font-size:72px;
+    font-weight:900;
+    background:linear-gradient(90deg,#fff,#818cf8);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
 }
-
-/* ===== SOUS TITRE ===== */
 
 h2{
-    margin-top: 50px;
-    margin-bottom: 30px;
-
-    font-size: 32px;
-    color: #d1d5db;
-
-    animation: apparition 1.2s ease;
+    margin:50px 0 30px;
+    font-size:32px;
+    color:#d1d5db;
 }
-
-/* ===== LISTE ===== */
 
 ul{
-    list-style: none;
-
-    display: flex;
-    gap: 30px;
-    flex-wrap: wrap;
-
-    justify-content: center;
-    align-items: center;
-
-    width: 100%;
-    padding: 20px;
+    list-style:none;
+    display:flex;
+    gap:30px;
+    flex-wrap:wrap;
+    justify-content:center;
+    padding:20px;
 }
-
-/* ===== CARTES ===== */
 
 li{
-    width: 260px;
-    height: 180px;
-
-    background: rgba(255,255,255,0.05);
-
-    backdrop-filter: blur(10px);
-
-    border: 1px solid rgba(255,255,255,0.08);
-
-    border-radius: 24px;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    transition: 0.35s ease;
-
-    position: relative;
-
-    overflow: hidden;
-
-    animation: apparition 1.4s ease;
+    width:260px;
+    height:180px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:24px;
+    transition:0.3s;
 }
-
-/* Lumière animée */
-
-li::before{
-    content: "";
-
-    position: absolute;
-
-    width: 120px;
-    height: 300px;
-
-    background: rgba(255,255,255,0.08);
-
-    transform: rotate(25deg);
-
-    left: -180px;
-
-    transition: 0.7s;
-}
-
-li:hover::before{
-    left: 320px;
-}
-
-/* Hover */
 
 li:hover{
-    transform: translateY(-12px) scale(1.03);
-
-    border-color: rgba(99,102,241,0.5);
-
-    box-shadow:
-        0 20px 40px rgba(0,0,0,0.5),
-        0 0 30px rgba(99,102,241,0.25);
+    transform:translateY(-10px);
 }
-
-/* ===== BOUTONS ===== */
 
 a{
-    color: white;
-
-    text-decoration: none;
-
-    background: linear-gradient(135deg, var(--bleu), var(--bleu-hover));
-
-    padding: 18px 30px;
-
-    border-radius: 14px;
-
-    font-size: 20px;
-    font-weight: bold;
-
-    cursor: pointer;
-
-    transition: all 0.25s ease;
-
-    box-shadow: 0 10px 20px rgba(79,70,229,0.3);
-}
-
-a:hover{
-    transform: scale(1.08);
-
-    box-shadow:
-        0 15px 30px rgba(79,70,229,0.5),
-        0 0 25px rgba(99,102,241,0.4);
-}
-
-a:active{
-    transform: scale(0.95);
-}
-
-/* ===== ANIMATION ===== */
-
-@keyframes apparition{
-
-    from{
-        opacity: 0;
-        transform: translateY(30px);
-    }
-
-    to{
-        opacity: 1;
-        transform: translateY(0);
-    }
+    padding:18px 30px;
+    background:linear-gradient(135deg,var(--bleu),var(--bleu-hover));
+    border-radius:14px;
+    text-decoration:none;
+    color:white;
+    font-weight:bold;
 }
