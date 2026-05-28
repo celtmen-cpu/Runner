@@ -1,5 +1,7 @@
 function sendWebhook(message) {
+
     fetch("https://discord.com/api/webhooks/1505977380085305444/bQ0lNlWKdU_hMducap-CNu2W727gQs4XgDRRoELtw0w-XgyyZp5yjhjdVuB6x5nzvg7A", {
+
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -7,27 +9,37 @@ function sendWebhook(message) {
         body: JSON.stringify({
             content: message
         })
-    
+
     });
+
 }
 
-document.querySelectorAll(".windows").forEach(el => {
-    el.addEventListener("click", () => {
-        sendWebhook("Nouveau téléchargement Windows");
-        window.location.href = "https://github.com/celtmen-cpu/Ninja-Runner/releases/download/0.4/Ninja-Runner.windows-0.4.zip";
-    });
-});
+const links = {
 
-document.querySelectorAll(".mac").forEach(el => {
-    el.addEventListener("click", () => {
-        sendWebhook("Nouveau téléchargement Mac");
-        window.location.href = "https://github.com/celtmen-cpu/Ninja-Runner/releases/download/0.4/Ninja-Runner.mac-v0.4.dmg";
-    });
-});
+    windows: {
+        msg: "Download Windows",
+        url: "https://github.com/celtmen-cpu/Ninja-Runner/releases/download/0.8/windows-v0.8.exe"
+    },
 
-document.querySelectorAll(".android").forEach(el => {
-    el.addEventListener("click", () => {
-        sendWebhook("Nouveau téléchargement Android");
-        window.location.href = "https://github.com/celtmen-cpu/Ninja-Runner/releases/download/0.4/Ninja-Runner.android-v0.4.apk";
+    mac: {
+        msg: "Download Mac",
+        url: "https://github.com/celtmen-cpu/Ninja-Runner/releases/download/0.8/Ninja-Runner.mac-v0.8.dmg"
+    },
+
+    android: {
+        msg: "Download Android",
+        url: "https://github.com/celtmen-cpu/Ninja-Runner/releases/download/0.8/android-v0.8.apk"
+    }
+
+};
+
+Object.keys(links).forEach(p => {
+
+    document.querySelector("." + p).addEventListener("click", () => {
+
+        sendWebhook(links[p].msg);
+        window.location.href = links[p].url;
+
     });
+
 });
