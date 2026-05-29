@@ -74,3 +74,32 @@ a{
     color:white;
     font-weight:bold;
 }
+/* Carte pour jouer en ligne */
+.game-card {
+    display:block;
+    max-width:800px;
+    margin:40px auto;
+    text-decoration:none;
+    color:var(--texte);
+}
+
+.game-card img {
+    width:100%;
+    aspect-ratio:16/9;
+    object-fit:cover;
+    display:block;
+    border-radius:18px;
+    border:1px solid rgba(255,255,255,0.1);
+    transition:0.3s;
+}
+
+.game-card:hover img {
+    transform:scale(1.02);
+}
+
+.game-card .text {
+    text-align:center;
+    margin-top:12px;
+    font-size:20px;
+    font-weight:700;
+}
