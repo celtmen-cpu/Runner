@@ -18,17 +18,17 @@ const links = {
 
     windows: {
         msg: "Download Windows",
-        url: "https://github.com/celtmen-cpu/Ninja-Runner/releases/download/0.8/windows-v0.8.exe"
+        url: "https://github.com/celtmen-cpu/Ninja-Runner/releases/download/0.9/windows-v0.9.exe"
     },
 
     mac: {
         msg: "Download Mac",
-        url: "https://github.com/celtmen-cpu/Ninja-Runner/releases/download/0.8/Ninja-Runner.mac-v0.8.dmg"
+        url: "https://github.com/celtmen-cpu/Ninja-Runner/releases/download/0.9/Ninja-Runner.mac-v0.9.dmg"
     },
 
     android: {
         msg: "Download Android",
-        url: "https://github.com/celtmen-cpu/Ninja-Runner/releases/download/0.8/android-v0.8.apk"
+        url: "https://github.com/celtmen-cpu/Night-Runner/releases/download/0.9/android-v0.9.apk"
     }
 
 };
